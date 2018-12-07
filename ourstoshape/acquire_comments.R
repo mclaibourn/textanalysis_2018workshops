@@ -2,7 +2,7 @@
 # Scrape Ours to Shape 
 # Using RSelenium 
 # Michele Claibourn
-# Acquire data: through September 10, 2018
+# Acquire data: through December 7, 2018
 # 1. Scrape comments: RSelenium approach
 # 2. Format comments for later analysis
 # 3. Save the data
@@ -39,9 +39,9 @@ remDr$navigate(url) # navigate to url; not opening
 remDr$getCurrentUrl()
 
 # Click Load More X times (default is "Community" comments)
-# As of 10/10, 40 clicks gets to end (34 on 9/10)
+# As of 12/7, 48 clicks gets to end (34 on 9/10, 40 on 10/10)
 counter <- 0
-while(counter<41){
+while(counter<48){
   morebutton <- remDr$findElement(using = 'css', value = "a.button")
   morebutton$clickElement()
   Sys.sleep(1) # add time between clicks
@@ -66,7 +66,8 @@ remDr <- remoteDriver(remoteServerAddr = "localhost",
 remDr$open() # open connections
 
 # Open web page
-remDr$navigate("https://ourstoshape.virginia.edu/comments") # navigate to url; not opening
+remDr$navigate(url) # navigate to url; not opening
+remDr$getCurrentUrl()
 
 # Navigate to select "Discovery" comments
 applybutton <- remDr$findElement(using = 'id', value = "edit-submit-webform-comments")
@@ -76,9 +77,9 @@ select_disc$getElementAttribute("value") # checking
 select_disc$clickElement()
 applybutton$clickElement() # Click Apply # 
 
-# As of 10/10, 18 clicks gets to end (16 on 9/10)
+# As of 12/7 21 clicks gets to end (16 on 9/10, 18 on 10/10)
 counter <- 0
-while(counter<19){
+while(counter<21){
   morebutton <- remDr$findElement(using = 'css', value = "a.button")
   morebutton$clickElement()
   Sys.sleep(1) # add time between clicks
@@ -103,7 +104,8 @@ remDr <- remoteDriver(remoteServerAddr = "localhost",
 remDr$open() # open connections
 
 # Open web page
-remDr$navigate("https://ourstoshape.virginia.edu/comments") # navigate to url; not opening
+remDr$navigate(url) # navigate to url; not opening
+remDr$getCurrentUrl()
 
 # Navigate to select "Service" comments
 applybutton <- remDr$findElement(using = 'id', value = "edit-submit-webform-comments")
@@ -113,7 +115,7 @@ select_serv$getElementAttribute("value") # checking
 select_serv$clickElement()
 applybutton$clickElement() # Click Apply # 
 
-# As of 10/10, 14 clicks gets to end (12 on 9/10)
+# As of 12/7, 15 clicks gets to end (12 on 9/10, 14 on 10/10)
 counter <- 0
 while(counter<15){
   morebutton <- remDr$findElement(using = 'css', value = "a.button")
